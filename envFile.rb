@@ -13,8 +13,7 @@ envfiles = ["/app/config/core.php",
             "/app/webroot/robots.txt",
             "/app/webroot/catalogCheck.php",
             "/app/webroot/catalogConfirm.php",
-            "/app/webroot/catalogSave.php",
-            "/app/webroot/img/headerlogo.png"]
+            "/app/webroot/catalogSave.php"]
 
 if ARGV.size < 2
   puts "ruby envFile.rb MODE(-dev or -pro) CAKEROOT"
