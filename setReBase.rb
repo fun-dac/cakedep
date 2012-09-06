@@ -7,11 +7,12 @@ require "fileutils"
 
 def htcreate(path, doc)
   ht=path+"/.htaccess"
-  FileUtils.mv(ht, ht+"-org") if File.exists?(ht)
+#  FileUtils.mv(ht, ht+"-org") if File.exists?(ht)
   File.open(ht, "w") do |f|
     f.puts doc
   end
   File.chmod(0604, ht)
+  system "git update-index --assume-unchanged #{ht}"
 end
 
 if ARGV.size < 2
