@@ -16,4 +16,4 @@ chmod 777 app/tmp/cache/models
 chmod 777 app/tmp/cache/persistent
 chmod 777 app/tmp/cache/views
 
-ruby /Users/exit/MyCode/cakedep/set_rebase.rb $1 $2 #RewiteBaseの書き換え
+ruby /var/cakedep/set_rebase.rb $1 $2 #RewiteBaseの書き換え
