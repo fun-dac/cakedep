@@ -12,6 +12,7 @@ cd $1 #CakePHPルートへ移動
 cp app/config/path.php.development app/config/path.php
 
 chmod 777 app/tmp/logs
+chmod 777 app/tmp/cache
 chmod 777 app/tmp/cache/models
 chmod 777 app/tmp/cache/persistent
 chmod 777 app/tmp/cache/views
