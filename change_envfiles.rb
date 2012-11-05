@@ -37,6 +37,5 @@ envfiles.each do |f|
   next unless File.exists?(target + mode)
 
   puts "target: " + target + mode
-  FileUtils.rm_r(target)
-  File.rename(target + mode, target)
+  FileUtils.copy(target + mode, target)
 end
