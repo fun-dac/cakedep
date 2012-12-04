@@ -15,17 +15,9 @@ set :deploy_to, "/var/www"
 set :deploy_via, :remote_cache
 set :use_sudo, true
 
-before "deploy", "git_tagging"
 after "deploy", "change_permission"
 after "deploy", "adjust_envfiles"
-
-desc "Gitにtagを打つ"
-task :git_tagging, roles => :app do
-  user = `git config --get user.name`.chomp
-  email = `git config --get user.email`.chomp
-  puts `git tag #{stage}_#{release_name} #{revision} -m "Deployed by #{user} <#{email}>"`
-  puts `git push --tags origin`
-end
+after "deploy", "tagging"
 
 desc "tmpディレクトリのパーミッションを設定"
 task :change_permission, roles => :app do
@@ -46,4 +38,13 @@ task :adjust_envfiles, roles => :app do
       cp #{target + env} #{target}
     CMD
   end
+end
+
+desc "Gitにtagを打つ"
+task :tagging, roles => :app do
+  path = File.join(deploy_to, "/current/")
+  name = Capistrano::CLI.ui.ask "バージョン名を入力してください(ex: v2.1): "
+  run <<-CMD
+    cd #{path} && git tag #{name}_#{release_name} #{revision} && git push --tags origin
+  CMD
 end

@@ -7,5 +7,5 @@ role :app, *%w[
 set :port, 64
 set :user, "capcake_deployer"
 set(:password) do
-    Capistrano::CLI.password_prompt "Set password for production server: "
+    Capistrano::CLI.password_prompt "productionサーバのパスワードを入力してください: "
 end
