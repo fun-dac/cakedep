@@ -1,0 +1,12 @@
+# デプロイ対象のCakeディレクトリ内で
+# ***.php.developmentや***.php.production
+# のように、環境毎にファイルを分けているものを列挙
+# 各スクリプトで、環境に沿ったファイル名に変更する
+
+- "/app/config/core.php"
+- "/app/config/database.php"
+- "/app/config/path.php"
+- "/app/webroot/robots.txt"
+- "/app/webroot/catalogCheck.php"
+- "/app/webroot/catalogConfirm.php"
+- "/app/webroot/catalogSave.php"
