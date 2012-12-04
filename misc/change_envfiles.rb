@@ -1,19 +1,14 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 require "fileutils"
+require "yaml"
 
 # 環境依存のファイルをファイル名で分けてあるので
 # .php.development もしくは .php.productionとしてあるファイル群を
 # .phpに戻す
 
 #環境依存ファイル
-envfiles = ["/app/config/core.php",
-            "/app/config/database.php",
-            "/app/config/path.php",
-            "/app/webroot/robots.txt",
-            "/app/webroot/catalogCheck.php",
-            "/app/webroot/catalogConfirm.php",
-            "/app/webroot/catalogSave.php"]
+envfiles = YAML::load open(File.dirname(__FILE__)+'/envfiles.yaml').read
 
 if ARGV.size < 2
   puts "ruby envFile.rb MODE(-dev or -pro) CAKEROOT"
