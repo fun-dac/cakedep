@@ -16,7 +16,6 @@ set :deploy_via, :remote_cache
 set :use_sudo, true
 
 after "deploy", "change_permission"
-after "deploy", "adjust_envfiles"
 after "deploy", "tagging"
 
 desc "tmpディレクトリのパーミッションを設定"
@@ -25,19 +24,6 @@ task :change_permission, roles => :app do
   run <<-CMD
     chmod -R 777 #{tmp_path}
   CMD
-end
-
-desc "環境依存ファイルをproduction環境に合わせる"
-task :adjust_envfiles, roles => :app do
-  files = YAML::load open(File.dirname(__FILE__)+'/envfiles.yaml').read
-  env = ".production"
-
-  files.each do |f|
-    target = File.join(deploy_to, "/current", f)
-    run <<-CMD
-      cp #{target + env} #{target}
-    CMD
-  end
 end
 
 desc "Gitにtagを打つ"
