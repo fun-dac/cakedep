@@ -7,7 +7,3 @@
 - "/app/config/database.php"
 - "/app/config/path.php"
 - "/app/webroot/robots.txt"
-- "/app/webroot/catalogCheck.php"
-- "/app/webroot/catalogConfirm.php"
-- "/app/webroot/catalogSave.php"
-- "/app/vendors/makehtaccess.php"
